@@ -1,0 +1,5 @@
+4
+Insert 200
+ExtractMax
+Insert 100
+ExtractMax

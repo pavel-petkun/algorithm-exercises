@@ -40,15 +40,11 @@ class Node:
 
 
 def codes_tree(s: str) -> Node:
-    letterfreq_heap = [
-        Node(freq=freq, letter=letter) for letter, freq in Counter(s).items()
-    ]
+    letterfreq_heap = [Node(freq=freq, letter=letter) for letter, freq in Counter(s).items()]
     heapq.heapify(letterfreq_heap)
 
     if len(letterfreq_heap) == 1:
-        return Node(
-            freq=letterfreq_heap[0].freq, letter=letterfreq_heap[0].letter, code="0"
-        )
+        return Node(freq=letterfreq_heap[0].freq, letter=letterfreq_heap[0].letter, code="0")
 
     while len(letterfreq_heap) > 1:
         # make a greedy step
@@ -56,9 +52,7 @@ def codes_tree(s: str) -> Node:
         min_node2 = heapq.heappop(letterfreq_heap)
         min_node1.code = "0"
         min_node2.code = "1"
-        heapq.heappush(
-            letterfreq_heap, Node.from_childnodes(left=min_node1, right=min_node2)
-        )
+        heapq.heappush(letterfreq_heap, Node.from_childnodes(left=min_node1, right=min_node2))
     return letterfreq_heap[0]
 
 
@@ -66,11 +60,11 @@ def encode(s: str) -> tuple[dict[str, str], str]:
     root_node = codes_tree(s)
     codes_dict = {}
     root_node.traverse(codes_dict, "")
-    encoded_str = "".join((codes_dict[letter] for letter in s))
+    encoded_str = "".join(codes_dict[letter] for letter in s)
     return codes_dict, encoded_str
 
 
-def main():
+def run():
     input_str = input()
     lettercode_dict, encoded_str = encode(input_str)
     print(f"{len(lettercode_dict)} {len(encoded_str)}")
@@ -80,4 +74,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    run()

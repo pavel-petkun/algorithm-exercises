@@ -1,0 +1,8 @@
+7
+Insert 3
+Insert 4
+Insert 10
+Insert 3
+Insert 3
+Insert 11
+ExtractMax

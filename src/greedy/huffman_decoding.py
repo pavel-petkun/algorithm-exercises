@@ -31,15 +31,15 @@ def decode(s: str, lettercode_dict: dict[str, str]) -> str:
     return decoded_str
 
 
-def main():
+def run():
     alphabet_size, _ = map(int, sys.stdin.readline().split())
     lettercode_dict = {}
     for i in range(alphabet_size):
         letter, code = tuple(e.strip() for e in sys.stdin.readline().split(":"))
         lettercode_dict[letter] = code
     encoded_str = sys.stdin.readline().strip()
-    print(decode(encoded_str, codeletter_dict))
+    print(decode(encoded_str, lettercode_dict))
 
 
 if __name__ == "__main__":
-    main()
+    run()
