@@ -11,7 +11,7 @@ PROBLEM_MODULE_NAME = "src.data_structures.priority_queue"
 def run_test(input_filepath, output_filepath, module_name):
     with open(input_filepath) as file:
         completed_process = subprocess.run(
-            ["python", "-m", module_name], stdin=file, capture_output=True, text=True
+            ["python", "-m", module_name], stdin=file, capture_output=True, text=True, check=False
         )
         actual_res = completed_process.stdout.strip()
 
